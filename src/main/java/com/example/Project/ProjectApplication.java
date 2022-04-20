@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.Project.domain.Item;
 import com.example.Project.domain.ItemRepository;
+import com.example.Project.domain.User;
+import com.example.Project.domain.UserRepository;
 
 
 @SpringBootApplication
@@ -21,11 +23,16 @@ public class ProjectApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner itemDemo(ItemRepository itemrepository) {
+	public CommandLineRunner itemDemo(ItemRepository itemrepository, UserRepository urepository) {
 		return (args) -> {
 			log.info("save some items");
 			itemrepository.save(new Item("Example", "5"));
 
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
+			
 			log.info("fetch all items");
 			for (Item item : itemrepository.findAll()) {
 				log.info(item.toString());
