@@ -17,6 +17,7 @@ class ProjectApplicationTests {
 	@Autowired
     private ShoppingListController controller;
 
+	//Smoke test
     @Test
     public void contexLoads() throws Exception {
         assertThat(controller).isNotNull();

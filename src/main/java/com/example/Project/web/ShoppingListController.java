@@ -66,4 +66,10 @@ public class ShoppingListController {
 		model.addAttribute("item", repository.findById(itemId));
 		return "editItem.html";
 	}
+	
+	//Sisäänkirjautuminen
+	@RequestMapping(value="/login")
+		public String login() {
+			return "login";
+	}   
 }
