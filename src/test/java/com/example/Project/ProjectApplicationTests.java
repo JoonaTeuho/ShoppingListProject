@@ -1,13 +1,25 @@
 package com.example.Project;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.example.Project.web.ShoppingListController;
+
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class ProjectApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	@Autowired
+    private ShoppingListController controller;
 
+    @Test
+    public void contexLoads() throws Exception {
+        assertThat(controller).isNotNull();
+    
+    }
 }

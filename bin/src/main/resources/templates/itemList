@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shopping list</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1></h1>
+	<table class="table table-striped" >
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+
+		</tr>
+		<tr th:each="item : ${items}">
+			<td th:text="${item.name}"></td>
+			<td th:text="${item.amount}"></td>
+
+			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td>
+			<td><a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">Edit</a></td>
+		</tr>
+	</table>
+	<a class="btn btn-success" href="/add">Add Item</a>
+</body>
+</html>
